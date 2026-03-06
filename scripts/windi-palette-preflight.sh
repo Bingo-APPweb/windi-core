@@ -97,16 +97,13 @@ else
   result "Export Engine POST /export" "WARN" "sem resposta válida — testar manualmente"
 fi
 
-# ActionBridge → :8105
-AB_CODE=$(check_http "http://localhost:8105/actionbridge/health")
-if [ "$AB_CODE" = "200" ] || [ "$AB_CODE" = "404" ]; then
-  if [ "$AB_CODE" = "200" ]; then
-    result "ActionBridge → :8105" "OK" "endpoint acessível"
-  else
-    result "ActionBridge → :8105" "WARN" "HTTP 404 — confirmar rota real no communiqué"
-  fi
+# Communiqué API Stats
+COM_STATS=$(curl -s --max-time 3 "http://localhost:8105/api/communique/stats" 2>/dev/null)
+if echo "$COM_STATS" | grep -q '"total"'; then
+  TOTAL=$(echo "$COM_STATS" | grep -o '"total":[0-9]*' | cut -d: -f2)
+  result "Communiqué API /stats" "OK" "$TOTAL documentos"
 else
-  result "ActionBridge → :8105" "WARN" "HTTP $AB_CODE — verificar manualmente"
+  result "Communiqué API /stats" "WARN" "sem resposta válida"
 fi
 
 # ============================================================
