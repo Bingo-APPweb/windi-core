@@ -9,5 +9,6 @@
   "repository": "https://github.com/Bingo-APPweb/windi-core",
   "license": "MIT",
   "keywords": ["windi", "governance", "constitutional", "infrastructure", "strato"],
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "hooks": "./hooks/hooks.json"
 }
