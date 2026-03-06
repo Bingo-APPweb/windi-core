@@ -1,0 +1,106 @@
+{
+  "name": "windi-core",
+  "description": "WINDI sovereign intelligence layer for Claude Code. Provides infrastructure operations, agent management, document governance, and constitutional protocol for the WINDI ecosystem on Strato (87.106.29.233). Includes 8 domain skills, Three Dragons agent profiles, and constitutional hooks.",
+  "version": "1.0.0",
+  "author": {
+    "name": "WINDI Publishing House",
+    "url": "https://windi-domain.com"
+  },
+  "homepage": "https://windi-domain.com",
+  "repository": "github:Bingo-APPweb/windi-core",
+  "license": "WINDI-SOVEREIGN",
+
+  "constitutional": {
+    "principle": "AI processes. Human decides. WINDI guarantees.",
+    "invariant_i9": "IRREMEDIÁVEL — Prohibition of Autonomy Escalation",
+    "limits": [
+      "no-auto-install",
+      "no-self-update-autonomous",
+      "no-write-outside-opt-windi",
+      "no-sealed-port-access-without-approval",
+      "no-destructive-actions-as-default",
+      "install-upgrade-requires-human-dragon-approval"
+    ],
+    "sealed_ports": [8101, 8102, 8106],
+    "source_of_truth": "WINDI",
+    "execution_channel": "Claude Code"
+  },
+
+  "skills": [
+    {
+      "name": "windi-location-matrix",
+      "path": "skills/windi-location-matrix",
+      "tier": 1,
+      "description": "GPS da infraestrutura WINDI — portas, paths, nginx, serviços"
+    },
+    {
+      "name": "windi-infra",
+      "path": "skills/windi-infra",
+      "tier": 1,
+      "description": "Operações Strato — nginx, systemd, SSL, deploy, smoke test"
+    },
+    {
+      "name": "windi-terminal-code",
+      "path": "skills/windi-terminal-code",
+      "tier": 1,
+      "description": "Referência CCode CLI — self-knowledge do Gêmeo"
+    },
+    {
+      "name": "windi-agent-palette",
+      "path": "skills/windi-agent-palette",
+      "tier": 1,
+      "description": "Palette frontend — deploy, temas KLAR/NOIR, tiles, SealBadge"
+    },
+    {
+      "name": "windi-memory-loop",
+      "path": "skills/windi-memory-loop",
+      "tier": 2,
+      "description": "Inteligência fluídica — osmose, blocos de sabedoria, destilação"
+    },
+    {
+      "name": "windi-isp-factory",
+      "path": "skills/windi-isp-factory",
+      "tier": 2,
+      "description": "ISP profiles — 19 perfis institucionais, templates Jinja2, SGE"
+    },
+    {
+      "name": "windi-clone",
+      "path": "skills/windi-clone",
+      "tier": 2,
+      "description": "WINDI Clone instances — nós autônomos, prateleiras P0-P7, fases 1→3"
+    },
+    {
+      "name": "windi-sge-analyzer",
+      "path": "skills/windi-sge-analyzer",
+      "tier": 2,
+      "description": "SGE risk detection — 6 camadas semânticas, R0-R5"
+    }
+  ],
+
+  "agents": [
+    {
+      "name": "guardian",
+      "path": "agents/guardian.md",
+      "role": "Governança, Invariantes, Risco constitucional"
+    },
+    {
+      "name": "architect",
+      "path": "agents/architect.md",
+      "role": "Design técnico, Estrutura, Coerência sistêmica"
+    },
+    {
+      "name": "witness",
+      "path": "agents/witness.md",
+      "role": "Evidência, Documentação, Memória institucional"
+    }
+  ],
+
+  "hooks": [
+    {
+      "event": "PreToolUse",
+      "matcher": "Write|Edit",
+      "path": "hooks/pre-nginx-edit.sh",
+      "description": "nginx -t obrigatório antes de qualquer edição em sites-enabled/"
+    }
+  ]
+}
